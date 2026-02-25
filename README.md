@@ -79,6 +79,16 @@ add new lists, or add models to a list with a pull-request.
 - Google Nest Mini
 - Lenovo Smart Clock
 
+## Agent Skills
+
+If you are using an AI coding agent that supports [Agent Skills](https://agentskills.io/),
+you can install the Model Context Protocol Apps skills from the marketplace:
+
+```
+/plugin marketplace add modelcontextprotocol/ext-apps
+/plugin install mcp-apps@modelcontextprotocol-ext-apps
+```
+
 ## Security Recommendation
 
 Never store the user's password nor username in plain text, if storage is necessary, generate a master token and store it.
