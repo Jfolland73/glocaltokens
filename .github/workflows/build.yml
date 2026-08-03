@@ -14,27 +14,15 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
-        python-version: ["3.9"]
       fail-fast: false
 
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Prepare and install deps
+        uses: ./.github/actions/install-deps
 
-      - name: Install Poetry
-        uses: abatilo/actions-poetry@v3.0.0
-        with:
-          poetry-version: 1.3.2
-
-      - name: Install dependencies
-        run: poetry install
-
-      - name: Test package building
-        run: |
-          poetry build
+      - name: Check if package builds
+        run: uv build
